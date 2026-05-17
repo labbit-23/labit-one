@@ -93,12 +93,18 @@ Out of scope in Phase 1: result entry, analyzer integration, report generation, 
 ```
 labit-one/
 ├── README.md
+├── setup.py                  # pip-installable Frappe app (bench get-app compatible)
+├── requirements.txt
+├── labit_core/               # Frappe custom app package
+│   ├── hooks.py
+│   ├── modules.txt
+│   ├── doctype/              # DocTypes (Labit Requisition, Sample, etc.)
+│   ├── api/                  # Whitelisted action endpoints
+│   └── utils/                # Shared validators and helpers
 ├── docs/
 │   ├── ARCHITECTURE.md       # Ownership boundaries, DocTypes, design principles
 │   ├── PRODUCT.md            # Phase 1 product definition and success criteria
 │   └── decisions/            # Architecture Decision Records (ADRs)
-├── apps/
-│   └── labit_core/           # Frappe custom app (bench new-app labit_core)
 ├── frontend/
 │   └── labit-ui/             # React + Vite frontend
 ├── services/
@@ -129,7 +135,8 @@ git clone <repo-url> labit-one && cd labit-one
 # Start Frappe + MariaDB + Redis
 docker compose -f infra/docker/docker-compose.yml up -d
 
-# Install Frappe app
+# Install Frappe app directly from this repo
+bench get-app https://github.com/labbit-23/labit-one
 bench --site labit.local install-app labit_core
 
 # Start frontend dev server
