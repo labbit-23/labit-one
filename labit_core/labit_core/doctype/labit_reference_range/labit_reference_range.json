@@ -39,11 +39,11 @@
    "label": "Age Label"
   },
   {
-   "default": "Both",
+   "default": "All",
    "fieldname": "sex",
    "fieldtype": "Select",
    "label": "Sex",
-   "options": "Both\nMale\nFemale"
+   "options": "All\nMale\nFemale"
   },
   {
    "fieldname": "input_type",
