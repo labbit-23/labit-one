@@ -9,6 +9,7 @@
   "item_name",
   "package_code",
   "department",
+  "department_group",
   "column_break_1",
   "is_active",
   "package_scope",
@@ -47,6 +48,14 @@
    "label": "Department",
    "options": "Department",
    "filters": "[['Department', 'custom_is_lab_department', '=', 1]]"
+  },
+  {
+   "fetch_from": "department.parent_department",
+   "fieldname": "department_group",
+   "fieldtype": "Link",
+   "label": "Department Group",
+   "options": "Department",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_1",

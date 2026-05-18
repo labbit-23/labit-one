@@ -12,6 +12,7 @@
   "result_type",
   "decimal_places",
   "department",
+  "department_group",
   "loinc_code",
   "section_input_output",
   "input_type",
@@ -66,6 +67,14 @@
    "label": "Department",
    "options": "Department",
    "filters": "[['Department', 'custom_is_lab_department', '=', 1]]"
+  },
+  {
+   "fetch_from": "department.parent_department",
+   "fieldname": "department_group",
+   "fieldtype": "Link",
+   "label": "Department Group",
+   "options": "Department",
+   "read_only": 1
   },
   {
    "fieldname": "loinc_code",

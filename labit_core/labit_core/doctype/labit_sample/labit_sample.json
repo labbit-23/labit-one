@@ -21,6 +21,8 @@
   "volume_required_ml",
   "collection_location",
   "processing_location",
+  "department",
+  "department_group",
   "column_break_1",
   "status",
   "barcode",
@@ -143,6 +145,22 @@
    "fieldtype": "Link",
    "label": "Processing Location",
    "options": "Healthcare Service Unit"
+  },
+  {
+   "description": "Populated from Labit Test on sample generation",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "department.parent_department",
+   "fieldname": "department_group",
+   "fieldtype": "Link",
+   "label": "Department Group",
+   "options": "Department",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_1",
