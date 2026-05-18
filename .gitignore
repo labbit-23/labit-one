@@ -39,3 +39,4 @@ sites/
 .env
 .env.*
 !.env.example
+workflows
