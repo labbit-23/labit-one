@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "autoname": "field:customer",
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "customer_name",
+  "org_type",
+  "scheme_code",
+  "column_break_1",
+  "billing_cycle",
+  "credit_limit",
+  "credit_days",
+  "requires_pre_auth",
+  "section_claim_configuration",
+  "claim_format",
+  "claim_submission_email",
+  "claim_contact_name",
+  "claim_contact_phone",
+  "section_test_mapping",
+  "approved_tests",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "org_type",
+   "fieldtype": "Select",
+   "label": "Organization Type",
+   "options": "Government Scheme\nCorporate\nInsurance TPA\nPSU\nNGO\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scheme_code",
+   "fieldtype": "Data",
+   "label": "Scheme Code"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Per Visit",
+   "fieldname": "billing_cycle",
+   "fieldtype": "Select",
+   "label": "Billing Cycle",
+   "options": "Per Visit\nMonthly\nQuarterly"
+  },
+  {
+   "fieldname": "credit_limit",
+   "fieldtype": "Currency",
+   "label": "Credit Limit"
+  },
+  {
+   "default": "30",
+   "fieldname": "credit_days",
+   "fieldtype": "Int",
+   "label": "Credit Days"
+  },
+  {
+   "fieldname": "requires_pre_auth",
+   "fieldtype": "Check",
+   "label": "Requires Pre-Authorization"
+  },
+  {
+   "fieldname": "section_claim_configuration",
+   "fieldtype": "Section Break",
+   "label": "Claim Configuration"
+  },
+  {
+   "fieldname": "claim_format",
+   "fieldtype": "Select",
+   "label": "Claim Format",
+   "options": "CGHS\nECHS\nStandard\nCustom"
+  },
+  {
+   "fieldname": "claim_submission_email",
+   "fieldtype": "Data",
+   "label": "Claim Submission Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "claim_contact_name",
+   "fieldtype": "Data",
+   "label": "Claim Contact Name"
+  },
+  {
+   "fieldname": "claim_contact_phone",
+   "fieldtype": "Data",
+   "label": "Claim Contact Phone"
+  },
+  {
+   "fieldname": "section_test_mapping",
+   "fieldtype": "Section Break",
+   "label": "Test Mapping"
+  },
+  {
+   "fieldname": "approved_tests",
+   "fieldtype": "Table",
+   "label": "Approved Tests",
+   "options": "Labit Org Test Map"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Organization Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Lab Staff",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

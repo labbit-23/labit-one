@@ -13,6 +13,11 @@
   "decimal_places",
   "department",
   "loinc_code",
+  "section_input_output",
+  "input_type",
+  "output_type",
+  "section_reference_ranges",
+  "reference_ranges",
   "is_machine_generated",
   "is_calculated",
   "calculation_formula",
@@ -65,6 +70,40 @@
    "fieldname": "loinc_code",
    "fieldtype": "Data",
    "label": "LOINC Code"
+  },
+  {
+   "fieldname": "section_input_output",
+   "fieldtype": "Section Break",
+   "label": "Input / Output Type"
+  },
+  {
+   "default": "Numeric",
+   "description": "How this parameter result is entered — a number or a text value",
+   "fieldname": "input_type",
+   "fieldtype": "Select",
+   "label": "Input Type",
+   "options": "Numeric\nText",
+   "reqd": 1
+  },
+  {
+   "default": "Numeric Flag",
+   "description": "Numeric Flag = H/L/HH/LL. Text Interpretation = Normal/Abnormal from text match. None = recorded only, no flag.",
+   "fieldname": "output_type",
+   "fieldtype": "Select",
+   "label": "Output / Interpretation Type",
+   "options": "Numeric Flag\nText Interpretation\nNone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_reference_ranges",
+   "fieldtype": "Section Break",
+   "label": "Reference Ranges"
+  },
+  {
+   "fieldname": "reference_ranges",
+   "fieldtype": "Table",
+   "label": "Reference Ranges",
+   "options": "Labit Reference Range"
   },
   {
    "fieldname": "is_machine_generated",

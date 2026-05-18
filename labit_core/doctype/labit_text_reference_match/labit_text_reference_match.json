@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "match_value",
+  "interpretation",
+  "flag",
+  "report_comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "match_value",
+   "fieldtype": "Data",
+   "label": "Match Value",
+   "reqd": 1
+  },
+  {
+   "fieldname": "interpretation",
+   "fieldtype": "Select",
+   "label": "Interpretation",
+   "options": "Normal\nAbnormal\nIndeterminate",
+   "reqd": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "flag",
+   "fieldtype": "Select",
+   "label": "Flag",
+   "options": "None\nLow\nHigh\nCritical Low\nCritical High"
+  },
+  {
+   "fieldname": "report_comment",
+   "fieldtype": "Data",
+   "label": "Report Comment"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Text Reference Match",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

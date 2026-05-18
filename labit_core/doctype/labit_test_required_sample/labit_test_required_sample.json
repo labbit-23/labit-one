@@ -10,7 +10,8 @@
   "time_label",
   "collection_sequence",
   "volume_required_ml",
-  "collection_instructions"
+  "collection_instructions",
+  "default_processing_unit"
  ],
  "fields": [
   {
@@ -54,6 +55,13 @@
    "fieldname": "collection_instructions",
    "fieldtype": "Data",
    "label": "Collection Instructions"
+  },
+  {
+   "fieldname": "default_processing_unit",
+   "fieldtype": "Link",
+   "label": "Default Processing Location",
+   "options": "Healthcare Service Unit",
+   "description": "Auto-populates processing_location on generated Labit Sample records"
   }
  ],
  "istable": 1,

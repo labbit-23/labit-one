@@ -19,6 +19,8 @@
   "collection_sequence",
   "tube_count",
   "volume_required_ml",
+  "collection_location",
+  "processing_location",
   "column_break_1",
   "status",
   "barcode",
@@ -127,6 +129,20 @@
    "fieldname": "volume_required_ml",
    "fieldtype": "Float",
    "label": "Volume Required (mL)"
+  },
+  {
+   "description": "Where the sample was drawn — home, satellite centre, main lab",
+   "fieldname": "collection_location",
+   "fieldtype": "Link",
+   "label": "Collection Location",
+   "options": "Healthcare Service Unit"
+  },
+  {
+   "description": "Lab/department where this sample will be analysed",
+   "fieldname": "processing_location",
+   "fieldtype": "Link",
+   "label": "Processing Location",
+   "options": "Healthcare Service Unit"
   },
   {
    "fieldname": "column_break_1",

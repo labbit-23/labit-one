@@ -11,6 +11,8 @@
   "department",
   "column_break_1",
   "is_active",
+  "package_scope",
+  "organization",
   "tat_hours",
   "section_tests",
   "tests",
@@ -54,6 +56,22 @@
    "fieldname": "is_active",
    "fieldtype": "Check",
    "label": "Is Active"
+  },
+  {
+   "default": "Generic",
+   "fieldname": "package_scope",
+   "fieldtype": "Select",
+   "label": "Package Scope",
+   "options": "Generic\nOrganization-Specific",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.package_scope=='Organization-Specific'",
+   "description": "Restrict this package to a specific B2B client",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Customer"
   },
   {
    "fieldname": "tat_hours",

@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "age_from_days",
+  "age_to_days",
+  "age_label",
+  "sex",
+  "input_type",
+  "output_type",
+  "section_numeric_bounds",
+  "low_normal",
+  "high_normal",
+  "critical_low",
+  "critical_high",
+  "section_text_matches",
+  "text_matches",
+  "method",
+  "notes"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "age_from_days",
+   "fieldtype": "Int",
+   "label": "Age From (Days)"
+  },
+  {
+   "default": "43800",
+   "fieldname": "age_to_days",
+   "fieldtype": "Int",
+   "label": "Age To (Days)"
+  },
+  {
+   "fieldname": "age_label",
+   "fieldtype": "Data",
+   "label": "Age Label"
+  },
+  {
+   "default": "Both",
+   "fieldname": "sex",
+   "fieldtype": "Select",
+   "label": "Sex",
+   "options": "Both\nMale\nFemale"
+  },
+  {
+   "fieldname": "input_type",
+   "fieldtype": "Select",
+   "label": "Input Type",
+   "options": "Numeric\nText",
+   "reqd": 1
+  },
+  {
+   "fieldname": "output_type",
+   "fieldtype": "Select",
+   "label": "Output Type",
+   "options": "Numeric Flag\nText Interpretation\nNone",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.input_type=='Numeric'",
+   "fieldname": "section_numeric_bounds",
+   "fieldtype": "Section Break",
+   "label": "Numeric Bounds"
+  },
+  {
+   "fieldname": "low_normal",
+   "fieldtype": "Float",
+   "label": "Low Normal"
+  },
+  {
+   "fieldname": "high_normal",
+   "fieldtype": "Float",
+   "label": "High Normal"
+  },
+  {
+   "fieldname": "critical_low",
+   "fieldtype": "Float",
+   "label": "Critical Low"
+  },
+  {
+   "fieldname": "critical_high",
+   "fieldtype": "Float",
+   "label": "Critical High"
+  },
+  {
+   "depends_on": "eval:doc.input_type=='Text'",
+   "fieldname": "section_text_matches",
+   "fieldtype": "Section Break",
+   "label": "Text Matches"
+  },
+  {
+   "fieldname": "text_matches",
+   "fieldtype": "Table",
+   "label": "Text Matches",
+   "options": "Labit Text Reference Match"
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Data",
+   "label": "Method"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Reference Range",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
