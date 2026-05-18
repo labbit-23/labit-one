@@ -62,9 +62,10 @@
   },
   {
    "fieldname": "department",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Department",
-   "options": "\nBiochemistry\nHaematology\nMicrobiology\nImmunology\nSerology"
+   "options": "Department",
+   "filters": "[['Department', 'custom_is_lab_department', '=', 1]]"
   },
   {
    "fieldname": "loinc_code",

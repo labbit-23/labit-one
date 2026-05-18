@@ -7,6 +7,10 @@ app_license = "MIT"
 
 required_apps = ["frappe", "erpnext"]
 
+fixtures = [
+    {"dt": "Custom Field", "filters": [["module", "=", "Labit Core"]]}
+]
+
 # ---------------------------------------------------------------------------
 # Document Events
 # ---------------------------------------------------------------------------

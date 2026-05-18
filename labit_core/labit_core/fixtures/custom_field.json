@@ -1,0 +1,12 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "Department",
+  "fieldname": "custom_is_lab_department",
+  "fieldtype": "Check",
+  "label": "Is Lab Department",
+  "description": "Flag lab/clinical departments. Management, Accounts, HR etc. should leave this unchecked.",
+  "insert_after": "department_name",
+  "module": "Labit Core"
+ }
+]
