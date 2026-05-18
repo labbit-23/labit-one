@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "parameter",
+  "parameter_name",
+  "short_code",
+  "result_type",
+  "sequence"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameter",
+   "fieldtype": "Link",
+   "label": "Parameter",
+   "options": "Labit Test Parameter",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "parameter.parameter_name",
+   "fieldname": "parameter_name",
+   "fieldtype": "Data",
+   "label": "Parameter Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "parameter.short_code",
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "label": "Short Code",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "parameter.result_type",
+   "fieldname": "result_type",
+   "fieldtype": "Data",
+   "label": "Result Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Test Parameter Link",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

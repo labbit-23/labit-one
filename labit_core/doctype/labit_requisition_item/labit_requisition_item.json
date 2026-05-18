@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "item_name",
+  "item_type",
+  "qty",
+  "rate",
+  "priority",
+  "sample_type",
+  "needs_report",
+  "column_break_1",
+  "status",
+  "section_collection_status",
+  "samples_collected",
+  "samples_collected_at",
+  "processing_done",
+  "processing_done_at",
+  "approved",
+  "approved_at",
+  "report_delivered",
+  "report_delivered_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Item Type",
+   "options": "Test\nPackage",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate"
+  },
+  {
+   "default": "Routine",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "STAT\nUrgent\nRoutine"
+  },
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Link",
+   "label": "Sample Type",
+   "options": "Labit Sample Type"
+  },
+  {
+   "default": "1",
+   "fieldname": "needs_report",
+   "fieldtype": "Check",
+   "label": "Needs Report"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Ordered",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ordered\nSamples Pending\nIn Progress\nResulted\nApproved\nDelivered\nCancelled"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_collection_status",
+   "fieldtype": "Section Break",
+   "label": "Collection Status"
+  },
+  {
+   "fieldname": "samples_collected",
+   "fieldtype": "Check",
+   "label": "Samples Collected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "samples_collected_at",
+   "fieldtype": "Datetime",
+   "label": "Samples Collected At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processing_done",
+   "fieldtype": "Check",
+   "label": "Processing Done",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processing_done_at",
+   "fieldtype": "Datetime",
+   "label": "Processing Done At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved",
+   "fieldtype": "Check",
+   "label": "Approved",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_at",
+   "fieldtype": "Datetime",
+   "label": "Approved At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "report_delivered",
+   "fieldtype": "Check",
+   "label": "Report Delivered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "report_delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Report Delivered At",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Requisition Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

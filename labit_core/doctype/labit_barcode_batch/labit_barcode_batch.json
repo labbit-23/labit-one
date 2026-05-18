@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "autoname": "BCH-.YYYY.-.####",
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "issued_to",
+  "issued_to_name",
+  "issued_date",
+  "issued_count",
+  "used_count",
+  "returned_count",
+  "status",
+  "column_break_1",
+  "issued_by",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "issued_to",
+   "fieldtype": "Link",
+   "label": "Issued To",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "issued_to.employee_name",
+   "fieldname": "issued_to_name",
+   "fieldtype": "Data",
+   "label": "Issued To Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "issued_date",
+   "fieldtype": "Date",
+   "label": "Issued Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "issued_count",
+   "fieldtype": "Int",
+   "label": "Issued Count",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "used_count",
+   "fieldtype": "Int",
+   "label": "Used Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "returned_count",
+   "fieldtype": "Int",
+   "label": "Returned Count",
+   "read_only": 1
+  },
+  {
+   "default": "Prepared",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Prepared\nIssued\nPartially Used\nClosed"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "label": "Issued By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Barcode Batch",
+ "naming_rule": "Expression (old-style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

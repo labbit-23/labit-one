@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "autoname": "field:sample_type_name",
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sample_type_name",
+  "container_type",
+  "container_color",
+  "tube_draw_volume_ml",
+  "tube_usable_volume_ml",
+  "aliquot_volume_ml",
+  "requires_centrifugation",
+  "centrifugation_protocol",
+  "stability_room_temp_hours",
+  "stability_refrigerated_hours",
+  "stability_frozen_days",
+  "special_instructions"
+ ],
+ "fields": [
+  {
+   "fieldname": "sample_type_name",
+   "fieldtype": "Data",
+   "label": "Sample Type Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "container_type",
+   "fieldtype": "Data",
+   "label": "Container Type"
+  },
+  {
+   "fieldname": "container_color",
+   "fieldtype": "Data",
+   "label": "Container Color"
+  },
+  {
+   "fieldname": "tube_draw_volume_ml",
+   "fieldtype": "Float",
+   "label": "Tube Draw Volume (mL)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tube_usable_volume_ml",
+   "fieldtype": "Float",
+   "label": "Tube Usable Volume (mL)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aliquot_volume_ml",
+   "fieldtype": "Float",
+   "label": "Aliquot Volume (mL)"
+  },
+  {
+   "fieldname": "requires_centrifugation",
+   "fieldtype": "Check",
+   "label": "Requires Centrifugation"
+  },
+  {
+   "fieldname": "centrifugation_protocol",
+   "fieldtype": "Data",
+   "label": "Centrifugation Protocol"
+  },
+  {
+   "fieldname": "stability_room_temp_hours",
+   "fieldtype": "Int",
+   "label": "Stability at Room Temp (Hours)"
+  },
+  {
+   "fieldname": "stability_refrigerated_hours",
+   "fieldtype": "Int",
+   "label": "Stability Refrigerated (Hours)"
+  },
+  {
+   "fieldname": "stability_frozen_days",
+   "fieldtype": "Int",
+   "label": "Stability Frozen (Days)"
+  },
+  {
+   "fieldname": "special_instructions",
+   "fieldtype": "Text",
+   "label": "Special Instructions"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Sample Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

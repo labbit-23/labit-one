@@ -1,0 +1,321 @@
+{
+ "actions": [],
+ "autoname": "SM-.YYYY.-.#####",
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_identity",
+  "barcode_batch",
+  "requisition",
+  "requisition_item",
+  "patient",
+  "patient_name",
+  "section_sample_details",
+  "sample_type",
+  "sample_type_name",
+  "time_point_minutes",
+  "time_label",
+  "collection_sequence",
+  "tube_count",
+  "volume_required_ml",
+  "column_break_1",
+  "status",
+  "barcode",
+  "section_identity_verification",
+  "patient_identity_verified",
+  "verification_method",
+  "verified_at",
+  "verified_by",
+  "collection_deviation",
+  "section_collection",
+  "collected_by",
+  "collected_at",
+  "column_break_2",
+  "dispatched_by",
+  "dispatched_at",
+  "transport_condition",
+  "section_receipt",
+  "received_by",
+  "received_at",
+  "acceptance_status",
+  "rejection_reason",
+  "condition_at_receipt",
+  "column_break_3",
+  "linked_by",
+  "linked_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_identity",
+   "fieldtype": "Section Break",
+   "label": "Identity"
+  },
+  {
+   "fieldname": "barcode_batch",
+   "fieldtype": "Link",
+   "label": "Barcode Batch",
+   "options": "Labit Barcode Batch"
+  },
+  {
+   "fieldname": "requisition",
+   "fieldtype": "Link",
+   "label": "Requisition",
+   "options": "Labit Requisition"
+  },
+  {
+   "fieldname": "requisition_item",
+   "fieldtype": "Link",
+   "label": "Requisition Item",
+   "options": "Labit Requisition Item"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Patient",
+   "options": "Patient"
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_sample_details",
+   "fieldtype": "Section Break",
+   "label": "Sample Details"
+  },
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Link",
+   "label": "Sample Type",
+   "options": "Labit Sample Type"
+  },
+  {
+   "fetch_from": "sample_type.sample_type_name",
+   "fieldname": "sample_type_name",
+   "fieldtype": "Data",
+   "label": "Sample Type Name",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "time_point_minutes",
+   "fieldtype": "Int",
+   "label": "Time Point (Minutes)"
+  },
+  {
+   "fieldname": "time_label",
+   "fieldtype": "Data",
+   "label": "Time Label"
+  },
+  {
+   "default": "1",
+   "fieldname": "collection_sequence",
+   "fieldtype": "Int",
+   "label": "Collection Sequence"
+  },
+  {
+   "default": "1",
+   "fieldname": "tube_count",
+   "fieldtype": "Int",
+   "label": "Tube Count"
+  },
+  {
+   "fieldname": "volume_required_ml",
+   "fieldtype": "Float",
+   "label": "Volume Required (mL)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Unissued",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Unissued\nIssued\nCollected\nIn Transit\nReceived\nProcessing\nStored\nDiscarded\nRejected"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Barcode",
+   "label": "Barcode"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_identity_verification",
+   "fieldtype": "Section Break",
+   "label": "Patient Identity Verification"
+  },
+  {
+   "fieldname": "patient_identity_verified",
+   "fieldtype": "Check",
+   "label": "Patient Identity Verified"
+  },
+  {
+   "depends_on": "eval:doc.patient_identity_verified==1",
+   "fieldname": "verification_method",
+   "fieldtype": "Select",
+   "label": "Verification Method",
+   "options": "Requisition Scan\nName+DOB\nName+Phone\nOther"
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "collection_deviation",
+   "fieldtype": "Text",
+   "label": "Collection Deviation"
+  },
+  {
+   "fieldname": "section_collection",
+   "fieldtype": "Section Break",
+   "label": "Collection"
+  },
+  {
+   "fieldname": "collected_by",
+   "fieldtype": "Link",
+   "label": "Collected By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "collected_at",
+   "fieldtype": "Datetime",
+   "label": "Collected At"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dispatched_by",
+   "fieldtype": "Link",
+   "label": "Dispatched By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "dispatched_at",
+   "fieldtype": "Datetime",
+   "label": "Dispatched At"
+  },
+  {
+   "fieldname": "transport_condition",
+   "fieldtype": "Select",
+   "label": "Transport Condition",
+   "options": "Room Temp\nCold Chain\nFrozen"
+  },
+  {
+   "fieldname": "section_receipt",
+   "fieldtype": "Section Break",
+   "label": "Receipt"
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "received_at",
+   "fieldtype": "Datetime",
+   "label": "Received At"
+  },
+  {
+   "fieldname": "acceptance_status",
+   "fieldtype": "Select",
+   "label": "Acceptance Status",
+   "options": "Accepted\nConditionally Accepted\nRejected"
+  },
+  {
+   "depends_on": "eval:doc.acceptance_status=='Rejected' || doc.acceptance_status=='Conditionally Accepted'",
+   "fieldname": "rejection_reason",
+   "fieldtype": "Select",
+   "label": "Rejection Reason",
+   "options": "Hemolyzed\nClotted\nInsufficient Volume\nWrong Tube\nLabelling Error\nDelayed\nTemperature Excursion\nOther"
+  },
+  {
+   "fieldname": "condition_at_receipt",
+   "fieldtype": "Text",
+   "label": "Condition at Receipt"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_by",
+   "fieldtype": "Link",
+   "label": "Linked By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_at",
+   "fieldtype": "Datetime",
+   "label": "Linked At",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Sample",
+ "naming_rule": "Expression (old-style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Lab Staff",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

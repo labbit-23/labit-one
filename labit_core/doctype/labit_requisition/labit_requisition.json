@@ -13,9 +13,12 @@
   "requisition_date",
   "status",
   "column_break_1",
-  "referred_by",
   "sales_invoice",
   "created_by_user",
+  "referral_type",
+  "referring_doctor",
+  "referring_organization",
+  "referral_notes",
   "section_tests",
   "items",
   "section_notes",
@@ -76,12 +79,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "referred_by",
-   "fieldtype": "Link",
-   "label": "Referred By",
-   "options": "Employee"
-  },
-  {
    "fieldname": "sales_invoice",
    "fieldtype": "Link",
    "label": "Sales Invoice",
@@ -93,6 +90,33 @@
    "label": "Created By",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "default": "Walk-in",
+   "fieldname": "referral_type",
+   "fieldtype": "Select",
+   "label": "Referral Type",
+   "options": "Walk-in\nDoctor\nCorporate\nCamp\nOnline\nInternal"
+  },
+  {
+   "depends_on": "eval:doc.referral_type=='Doctor'",
+   "fieldname": "referring_doctor",
+   "fieldtype": "Link",
+   "label": "Referring Doctor",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "depends_on": "eval:doc.referral_type=='Corporate' || doc.referral_type=='Camp'",
+   "fieldname": "referring_organization",
+   "fieldtype": "Link",
+   "label": "Referring Organization",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:doc.referral_type!='Walk-in'",
+   "fieldname": "referral_notes",
+   "fieldtype": "Data",
+   "label": "Referral Notes"
   },
   {
    "fieldname": "section_tests",

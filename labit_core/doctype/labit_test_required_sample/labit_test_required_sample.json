@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sample_type",
+  "sample_type_name",
+  "time_point_minutes",
+  "time_label",
+  "collection_sequence",
+  "volume_required_ml",
+  "collection_instructions"
+ ],
+ "fields": [
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Link",
+   "label": "Sample Type",
+   "options": "Labit Sample Type",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sample_type.sample_type_name",
+   "fieldname": "sample_type_name",
+   "fieldtype": "Data",
+   "label": "Sample Type Name",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "time_point_minutes",
+   "fieldtype": "Int",
+   "label": "Time Point (Minutes)"
+  },
+  {
+   "fieldname": "time_label",
+   "fieldtype": "Data",
+   "label": "Time Label"
+  },
+  {
+   "default": "1",
+   "fieldname": "collection_sequence",
+   "fieldtype": "Int",
+   "label": "Collection Sequence"
+  },
+  {
+   "fieldname": "volume_required_ml",
+   "fieldtype": "Float",
+   "label": "Volume Required (mL)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "collection_instructions",
+   "fieldtype": "Data",
+   "label": "Collection Instructions"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Test Required Sample",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

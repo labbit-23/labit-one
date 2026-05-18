@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "autoname": "field:parameter_name",
+ "creation": "2026-05-18 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "parameter_name",
+  "short_code",
+  "sample_type",
+  "unit",
+  "result_type",
+  "decimal_places",
+  "department",
+  "loinc_code",
+  "is_machine_generated",
+  "is_calculated",
+  "calculation_formula",
+  "formula_expression",
+  "dependent_parameters",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameter_name",
+   "fieldtype": "Data",
+   "label": "Parameter Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "label": "Short Code"
+  },
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Link",
+   "label": "Sample Type",
+   "options": "Labit Sample Type"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "result_type",
+   "fieldtype": "Select",
+   "label": "Result Type",
+   "options": "\nNumeric\nText\nPositive-Negative\nTitre"
+  },
+  {
+   "default": "2",
+   "fieldname": "decimal_places",
+   "fieldtype": "Int",
+   "label": "Decimal Places"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Select",
+   "label": "Department",
+   "options": "\nBiochemistry\nHaematology\nMicrobiology\nImmunology\nSerology"
+  },
+  {
+   "fieldname": "loinc_code",
+   "fieldtype": "Data",
+   "label": "LOINC Code"
+  },
+  {
+   "fieldname": "is_machine_generated",
+   "fieldtype": "Check",
+   "label": "Machine Generated"
+  },
+  {
+   "fieldname": "is_calculated",
+   "fieldtype": "Check",
+   "label": "Calculated"
+  },
+  {
+   "fieldname": "calculation_formula",
+   "fieldtype": "Text",
+   "label": "Calculation Formula (Human-Readable)"
+  },
+  {
+   "depends_on": "eval:doc.is_calculated == 1",
+   "fieldname": "formula_expression",
+   "fieldtype": "Text",
+   "label": "Formula Expression (Python-Safe)"
+  },
+  {
+   "fieldname": "dependent_parameters",
+   "fieldtype": "Table",
+   "label": "Dependent Parameters",
+   "options": "Labit Parameter Dependency"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Test Parameter",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
