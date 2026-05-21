@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "instrument_id",
+  "machine_test_name",
+  "sample_type",
+  "time_point_minutes",
+  "column_break_1",
+  "labit_test",
+  "labit_parameter",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "description": "The instrument identifier as sent in Mirth payload DeviceId / MSH.3.1 (e.g. MindrayBS240, Architect, Maglumi)",
+   "fieldname": "instrument_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Instrument ID",
+   "reqd": 1
+  },
+  {
+   "description": "Exact test name string the machine sends (OBX.3.1, OBX.3.2, OBR.4.1, or OBX.3.6 depending on machine — normalised by Mirth before POST)",
+   "fieldname": "machine_test_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Machine Test Name",
+   "reqd": 1
+  },
+  {
+   "description": "Leave blank to match any sample type (wildcard fallback). Set to disambiguate e.g. Serum vs Plasma Glucose.",
+   "fieldname": "sample_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sample Type",
+   "options": "Labit Sample Type"
+  },
+  {
+   "default": "0",
+   "description": "0 for standard (non-timed) tests. Set to 60, 120, etc. for GTT and other timed series — matched against Labit Sample.time_point_minutes.",
+   "fieldname": "time_point_minutes",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Time Point (Minutes)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "labit_test",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Labit Test",
+   "options": "Labit Test",
+   "reqd": 1
+  },
+  {
+   "description": "The specific parameter within the test that this machine measurement maps to.",
+   "fieldname": "labit_parameter",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Labit Parameter",
+   "options": "Labit Test Parameter",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Instrument Test Map",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "search_fields": "instrument_id,machine_test_name",
+ "sort_field": "instrument_id",
+ "sort_order": "ASC",
+ "track_changes": 1
+}

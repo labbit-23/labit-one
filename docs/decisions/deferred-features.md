@@ -177,3 +177,42 @@ Westgard rule violations block patient result approval for the affected instrume
 **Design:**
 - On patient search: if new patient name + DOB is similar to existing → show warning with candidates
 - `Labit Patient Merge Request` — supervisor approves, system merges requisition history to surviving MRN
+
+---
+
+## Parameter Groups + Report Schema (Phase 2 — Reporting Layer)
+
+**What:** Grouping of parameters for structured report output, and the ability to define multiple report layouts per test.
+
+**Why deferred:** Machine integration (instrument test map + result ingestion) operates at the parameter level and does not require report schema. Schema is needed before PDF report generation is built.
+
+**Design:**
+
+### Labit Parameter Group
+A reusable named grouping of parameters displayed as a block on the report.
+
+- `group_name`: Data (e.g. "Electrolytes", "Differential Count", "Proteins")
+- `validation_rule`: Select — None / Sum to 100 (for differential counts — blocks approval if parameters in group don't sum to 100)
+- `parameters`: child table — ordered list of `Labit Test Parameter` links (display_order is row sequence)
+
+### Labit Report Schema
+Defines the layout for one variant of a test's report. A test can have multiple schemas.
+
+- `test`: Link → Labit Test
+- `schema_name`: Data (e.g. "Rapid", "Quantitative", "Positive Samples")
+- `is_default`: Check — the schema used unless overridden at result entry
+- `has_overall_impression`: Check — adds a free-text "Overall Impression / Interpretation" field at the end (e.g. HIV Positive Samples)
+- `items`: child table — ordered mixed list, each row is **either**:
+  - `parameter`: Link → Labit Test Parameter (directly placed parameter)
+  - `parameter_group`: Link → Labit Parameter Group (block of grouped parameters)
+  - (one or the other per row, not both; validation enforces this)
+
+**Key invariant:** `Labit Test Parameter` itself carries no grouping or display-order information. Grouping and ordering live entirely in the schema. The same parameter can appear in multiple schemas in different positions or groups.
+
+**HIV example:**
+- Test: HIV Antibody
+  - Schema "Rapid" (default): items = [parameter: Reactivity]
+  - Schema "Quantitative": items = [parameter: CD4 Count, parameter: Viral Load]
+  - Schema "Positive Samples": items = [parameter: Reactivity, parameter: Viral Load, parameter: CD4 Count], has_overall_impression = true
+
+**Differential Count rule:** Create a `Labit Parameter Group` "Differential Count" with validation_rule = "Sum to 100". At result approval, if any parameter in this group is unresulted or the group doesn't sum to 100, approval is blocked with a clear error.
