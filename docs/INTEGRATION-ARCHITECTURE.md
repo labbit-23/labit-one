@@ -339,12 +339,18 @@ The "30-day window" is the period a background Python sync service runs, pulling
 **Why PDFs only 2 years:** Attaching 10+ years of PDFs would overload ERPNext file storage and is not clinically necessary — structured result data is sufficient for trend views and delta checks. The 2-year PDF window covers the period most relevant to active patient care.
 
 **Import service design:**
-- Python script (lives in `labbit-py` or `py_utils`)
-- Reads from Shivam via its REST API (same endpoints Mirth uses today); falls back to direct Oracle query via `cx_Oracle` for data not exposed by the API
+- Python script in `labbit-py` or `py_utils`
+- Reads from **custom Shivam APIs** (Tomcat/Java) written specifically for this import — no Oracle driver, no `cx_Oracle`. The Shivam team writes whatever extraction endpoints the import needs (patients, requisitions, parameter-level results, PDF links).
 - Writes to ERPNext via Frappe REST client or direct bench call
 - Idempotent: checks `shivam_id` / `external_id` before inserting — safe to re-run
 - `Labit Import Batch` doctype tracks each run: timestamp, records synced, errors, resume offset
-- `source` field (Native / Shivam Import) on Requisition, Result, and Report records distinguishes historical from live
+- `source` field (Native / Shivam Import) + `is_archived = 1` on historical Requisition, Result, and Report records
+
+**PDF handling:**
+- PDF pull reuses/extends existing `labbit-py` worker logic (workers already pull PDFs from Neosoft)
+- PDFs stored **without the lab header** (logo, address, NABL block) — stripped at pull time to keep files lean
+- When ERPNext serves a historical report it applies its own header template over the stored content
+- 2-year window only — older records: structured result data present, no PDF attached, UI shows "Report PDF not available for records before [date]"
 
 **Decommission gate:** Shivam is not decommissioned until the import batch log shows zero errors and the last-2-years data set is fully verified in ERPNext. Older records can continue importing after cutover if needed.
 
@@ -378,7 +384,7 @@ The "30-day window" is the period a background Python sync service runs, pulling
 | Q5 | Is billing currently in Shivam or a separate system? | ❓ Open | Determines if historical invoice records need to migrate or are already in a separate accounting system |
 | Q6 | Pathologist approval UI — Labbit Next.js custom UI or ERPNext native form acceptable? | ❓ Open | Scope of Labbit frontend build |
 | Q7 | Multi-branch: how many locations, shared or separate Orthanc instance? | ❓ Open | ERPNext multi-branch vs multi-company setup; Orthanc routing |
-| Q8 | Does Shivam REST API expose historical requisitions + results at parameter level, or only report-level PDFs? | ❓ Open — critical for import design | Determines whether Oracle direct access is needed for historical result import, or Neosoft/Shivam API is sufficient |
+| Q8 | What data does the Shivam import API need to expose? (patients, requisitions, parameter-level results, PDF links) | ✅ Approach resolved — custom APIs will be written in Shivam (Tomcat/Java) as needed. No Oracle driver required. Shivam team writes whatever the import service needs. | Defines the Shivam-side API spec to be agreed with Shivam team before import script is built |
 
 ---
 
@@ -390,7 +396,7 @@ The "30-day window" is the period a background Python sync service runs, pulling
 | Patient record migration has duplicates/conflicts | High | Run dedup against phone + MRN before migration |
 | Python ASTM converters have gaps for some machines | Medium | Test each machine in isolation in staging |
 | Historical import incomplete at decommission time | High | Verify last-2-years data fully in ERPNext before decommission gate. Older batches can continue post-cutover. Do not treat decommission as a deadline that cuts import short. |
-| Shivam API does not expose parameter-level results for historical records | Medium | Test Shivam API against a known historical requisition before building import script. If gaps exist, plan Oracle direct access early. |
+| Shivam import APIs not ready when import script development starts | Medium | Agree API spec with Shivam team early — list of endpoints, payload shapes, pagination — before writing the Python import service. The spec drives both sides. |
 | Historical PDF availability — Neosoft API may not serve all PDFs back to 2013 | Medium | Audit Neosoft PDF API coverage. For gaps, check if iReport output files are retained on Shivam file server. |
 | ERPNext Healthcare module gaps need more custom work than estimated | Medium | Prototype Lab Accession doctype early; smoke test before full investment |
 | Orthanc MWL format differs between Shivam and labbit_lims push | Low | Orthanc DICOM conformance statement + test with one modality first |
