@@ -329,14 +329,21 @@ The "30-day window" is the period a background Python sync service runs, pulling
 1. Last 2-3 years first — most relevant for pathologist approval context and patient trend views
 2. Older records in subsequent batches, working backwards
 
-**Data imported per patient:**
+**JSON shape:** The import script defines what it needs — Shivam APIs are built to serve that shape. We don't reverse-engineer Shivam's internal structure; we specify the payload.
+
+**Data imported per patient — lab:**
 - ERPNext `Patient` record (dedup by phone + name + DOB before creating)
 - `Labit Patient External ID` (id_type: Shivam, for cross-reference)
-- Historical `Labit Requisition` records — **full history from ~2013** (source = Shivam Import, is_archived = 1, shivam_id stored for dedup)
-- Historical `Labit Result` records at parameter level — **full history from ~2013** (is_archived = 1)
-- iReport PDFs — **last 2 years only**, fetched from Neosoft API and attached to the corresponding report record in ERPNext. Older records carry the structured result data only; the UI shows "Historical record — report PDF not available for this period."
+- `Labit Requisition` — minimal compulsory fields only: patient, requisition_date, shivam_id, source=Shivam Import, is_archived=1. Not every Shivam field is required.
+- `Labit Requisition Item` — minimal: test reference, enough to link results correctly
+- `Labit Result` at parameter level — **full history from ~2013**, linked to Requisition + Test + Parameter. **No `Labit Sample` records created** — Sample is a live operational entity (physical tube, chain-of-custody). Historical imports bypass the sample layer entirely.
+- Lab PDFs — **last 2 years only**, stored without lab header. Older records: structured result data present, no PDF. UI shows "Report PDF not available for records before [date]."
 
-**Why PDFs only 2 years:** Attaching 10+ years of PDFs would overload ERPNext file storage and is not clinically necessary — structured result data is sufficient for trend views and delta checks. The 2-year PDF window covers the period most relevant to active patient care.
+**Data imported — radiology:**
+- Radiology in Shivam started ~4-5 years ago. Volume is low relative to lab.
+- Radiology result IS the PDF — no parameter-level structured data exists to import.
+- **Full radiology PDF history imported** (the 2-year cap does not apply — volume justifies full import). PDFs stored without lab header, linked to a minimal historical `Labit Radiology Order` record.
+- Design radiology import correctly from the start; do not treat it as an afterthought to retrofit.
 
 **Import service design:**
 - Python script in `labbit-py` or `py_utils`
