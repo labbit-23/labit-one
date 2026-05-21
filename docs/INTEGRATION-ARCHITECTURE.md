@@ -343,7 +343,8 @@ The "30-day window" is the period a background Python sync service runs, pulling
 - Reads from **custom Shivam APIs** (Tomcat/Java) written specifically for this import — no Oracle driver, no `cx_Oracle`. The Shivam team writes whatever extraction endpoints the import needs (patients, requisitions, parameter-level results, PDF links).
 - Writes to ERPNext via Frappe REST client or direct bench call
 - Idempotent: checks `shivam_id` / `external_id` before inserting — safe to re-run
-- `Labit Import Batch` doctype tracks each run: timestamp, records synced, errors, resume offset
+- **No offset pagination** — Shivam runs Oracle 11g (no `FETCH FIRST`/`LIMIT`; `ROWNUM` subqueries are fragile at scale). Batching strategy is **date-range windows** (`from_date` + `to_date` parameters on each Shivam API). Import script walks fixed-width windows (e.g. one month per call) working backwards from present. Window width tuned per table volume.
+- `Labit Import Batch` doctype tracks each run: timestamp, window start/end, records synced, errors. The last completed window date is the resume cursor — if the script is interrupted it picks up from the next unprocessed window.
 - `source` field (Native / Shivam Import) + `is_archived = 1` on historical Requisition, Result, and Report records
 
 **PDF handling:**
