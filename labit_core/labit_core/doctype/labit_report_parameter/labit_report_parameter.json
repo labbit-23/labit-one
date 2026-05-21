@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "parameter_name",
+  "result",
+  "result_value_display",
+  "result_unit",
+  "result_flag",
+  "reference_range",
+  "method",
+  "is_bold",
+  "sequence"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameter_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parameter",
+   "reqd": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Link",
+   "label": "Result Record",
+   "options": "Labit Result"
+  },
+  {
+   "fieldname": "result_value_display",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value"
+  },
+  {
+   "fieldname": "result_unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Unit"
+  },
+  {
+   "fieldname": "result_flag",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Flag",
+   "options": "\nNormal\nLow\nHigh\nCritical Low\nCritical High\nAbnormal"
+  },
+  {
+   "fieldname": "reference_range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference Range"
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Data",
+   "label": "Method"
+  },
+  {
+   "fieldname": "is_bold",
+   "fieldtype": "Check",
+   "label": "Bold (calculated/summary row)"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Seq"
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Report Parameter",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

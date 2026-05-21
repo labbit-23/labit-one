@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "autoname": "IMPORT-.YYYY.-.######",
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "entity_type",
+  "status",
+  "window_from",
+  "window_to",
+  "column_break_1",
+  "started_at",
+  "completed_at",
+  "section_counts",
+  "records_processed",
+  "records_skipped",
+  "records_failed",
+  "section_log",
+  "error_log",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "entity_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Entity Type",
+   "options": "Patient\nRequisition\nResult\nRadiology\nPDF",
+   "reqd": 1
+  },
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Running\nCompleted\nPartial\nFailed",
+   "reqd": 1
+  },
+  {
+   "description": "Start of the date-range window fetched from Shivam in this batch",
+   "fieldname": "window_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Window From",
+   "reqd": 1
+  },
+  {
+   "description": "End of the date-range window fetched from Shivam in this batch",
+   "fieldname": "window_to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Window To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_counts",
+   "fieldtype": "Section Break",
+   "label": "Counts"
+  },
+  {
+   "default": "0",
+   "fieldname": "records_processed",
+   "fieldtype": "Int",
+   "label": "Processed"
+  },
+  {
+   "default": "0",
+   "description": "Already existed in ERPNext — skipped (idempotent)",
+   "fieldname": "records_skipped",
+   "fieldtype": "Int",
+   "label": "Skipped (already existed)"
+  },
+  {
+   "default": "0",
+   "fieldname": "records_failed",
+   "fieldtype": "Int",
+   "label": "Failed"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_log",
+   "fieldtype": "Section Break",
+   "label": "Error Log"
+  },
+  {
+   "fieldname": "error_log",
+   "fieldtype": "Long Text",
+   "label": "Error Log"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Import Batch",
+ "naming_rule": "Expression (old-style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "window_from",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

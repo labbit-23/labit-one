@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "autoname": "MSG-.YYYY.-.######",
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "received_at",
+  "message_type",
+  "source_instrument",
+  "column_break_1",
+  "processed",
+  "processed_at",
+  "error_message",
+  "section_content",
+  "raw_message",
+  "parsed_json",
+  "section_links",
+  "linked_requisition",
+  "linked_sample",
+  "linked_result"
+ ],
+ "fields": [
+  {
+   "default": "Now",
+   "fieldname": "received_at",
+   "fieldtype": "Datetime",
+   "label": "Received At",
+   "reqd": 1
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "label": "Message Type",
+   "options": "HL7 ORU\nHL7 ORM\nHL7 ADT\nASTM\nJSON\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_instrument",
+   "fieldtype": "Data",
+   "label": "Source Instrument / Channel"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "processed",
+   "fieldtype": "Check",
+   "label": "Processed"
+  },
+  {
+   "fieldname": "processed_at",
+   "fieldtype": "Datetime",
+   "label": "Processed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Data",
+   "label": "Processing Error"
+  },
+  {
+   "fieldname": "section_content",
+   "fieldtype": "Section Break",
+   "label": "Message Content"
+  },
+  {
+   "fieldname": "raw_message",
+   "fieldtype": "Long Text",
+   "label": "Raw Message"
+  },
+  {
+   "fieldname": "parsed_json",
+   "fieldtype": "Code",
+   "label": "Parsed JSON",
+   "options": "JSON"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_links",
+   "fieldtype": "Section Break",
+   "label": "Linked Records"
+  },
+  {
+   "fieldname": "linked_requisition",
+   "fieldtype": "Link",
+   "label": "Requisition",
+   "options": "Labit Requisition"
+  },
+  {
+   "fieldname": "linked_sample",
+   "fieldtype": "Link",
+   "label": "Sample",
+   "options": "Labit Sample"
+  },
+  {
+   "fieldname": "linked_result",
+   "fieldtype": "Link",
+   "label": "Result",
+   "options": "Labit Result"
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Machine Message",
+ "naming_rule": "Expression (old-style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Lab Staff",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

@@ -28,6 +28,10 @@
   "items",
   "section_notes",
   "notes",
+  "section_import",
+  "source",
+  "is_archived",
+  "shivam_id",
   "amended_from"
  ],
  "fields": [
@@ -177,6 +181,36 @@
    "fieldname": "notes",
    "fieldtype": "Text",
    "label": "Notes"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.source=='Shivam Import'",
+   "fieldname": "section_import",
+   "fieldtype": "Section Break",
+   "label": "Import"
+  },
+  {
+   "default": "Native",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Native\nShivam Import",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_archived",
+   "fieldtype": "Check",
+   "label": "Archived (Historical)",
+   "read_only": 1
+  },
+  {
+   "description": "Shivam requisition ID — used for dedup during historical import",
+   "fieldname": "shivam_id",
+   "fieldtype": "Data",
+   "label": "Shivam ID",
+   "read_only": 1,
+   "unique": 1
   },
   {
    "fieldname": "amended_from",

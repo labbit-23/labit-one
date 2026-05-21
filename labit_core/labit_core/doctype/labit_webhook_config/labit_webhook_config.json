@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "autoname": "field:webhook_name",
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "webhook_name",
+  "url",
+  "secret",
+  "column_break_1",
+  "active",
+  "timeout_seconds",
+  "section_events",
+  "event_report_released",
+  "event_result_approved",
+  "event_requisition_created",
+  "event_sample_status_changed",
+  "section_log",
+  "last_fired_at",
+  "last_response_code",
+  "last_error"
+ ],
+ "fields": [
+  {
+   "description": "Unique identifier, e.g. labbit_dispatch",
+   "fieldname": "webhook_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "Endpoint URL",
+   "reqd": 1
+  },
+  {
+   "description": "Used to sign payloads — Labbit verifies X-Labit-Signature header",
+   "fieldname": "secret",
+   "fieldtype": "Password",
+   "label": "HMAC Secret"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "default": "10",
+   "fieldname": "timeout_seconds",
+   "fieldtype": "Int",
+   "label": "Timeout (seconds)"
+  },
+  {
+   "fieldname": "section_events",
+   "fieldtype": "Section Break",
+   "label": "Events"
+  },
+  {
+   "fieldname": "event_report_released",
+   "fieldtype": "Check",
+   "label": "Report Released"
+  },
+  {
+   "fieldname": "event_result_approved",
+   "fieldtype": "Check",
+   "label": "Result Approved"
+  },
+  {
+   "fieldname": "event_requisition_created",
+   "fieldtype": "Check",
+   "label": "Requisition Created"
+  },
+  {
+   "fieldname": "event_sample_status_changed",
+   "fieldtype": "Check",
+   "label": "Sample Status Changed"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_log",
+   "fieldtype": "Section Break",
+   "label": "Last Activity"
+  },
+  {
+   "fieldname": "last_fired_at",
+   "fieldtype": "Datetime",
+   "label": "Last Fired At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_response_code",
+   "fieldtype": "Int",
+   "label": "Last HTTP Response Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Data",
+   "label": "Last Error",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Webhook Config",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

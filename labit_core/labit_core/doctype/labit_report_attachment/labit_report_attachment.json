@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attachment_type",
+  "file",
+  "dicom_study_uid",
+  "description",
+  "sequence"
+ ],
+ "fields": [
+  {
+   "fieldname": "attachment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Machine PDF\nDICOM Reference\nImage\nInterpretation Note\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "File"
+  },
+  {
+   "fieldname": "dicom_study_uid",
+   "fieldtype": "Data",
+   "label": "DICOM Study UID"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Seq"
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Report Attachment",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

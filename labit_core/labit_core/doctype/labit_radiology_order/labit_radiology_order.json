@@ -1,0 +1,257 @@
+{
+ "actions": [],
+ "autoname": "RAD-.YYYY.-.#####",
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_order",
+  "requisition",
+  "requisition_item",
+  "patient",
+  "patient_name",
+  "patient_dob",
+  "patient_sex",
+  "column_break_1",
+  "modality",
+  "study_description",
+  "scheduled_at",
+  "performing_unit",
+  "radiologist",
+  "section_mwl",
+  "mwl_pushed",
+  "mwl_pushed_at",
+  "study_instance_uid",
+  "accession_uid",
+  "column_break_2",
+  "images_received",
+  "images_received_at",
+  "image_count",
+  "section_report",
+  "report_status",
+  "report_attachment",
+  "report_text",
+  "report_approved_at",
+  "linked_report"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_order",
+   "fieldtype": "Section Break",
+   "label": "Order Details"
+  },
+  {
+   "fieldname": "requisition",
+   "fieldtype": "Link",
+   "label": "Requisition",
+   "options": "Labit Requisition",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requisition_item",
+   "fieldtype": "Link",
+   "label": "Requisition Line Item",
+   "options": "Labit Requisition Item"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Patient",
+   "options": "Patient",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.dob",
+   "fieldname": "patient_dob",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.sex",
+   "fieldname": "patient_sex",
+   "fieldtype": "Select",
+   "label": "Sex",
+   "options": "Male\nFemale\nOther",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "modality",
+   "fieldtype": "Select",
+   "label": "Modality",
+   "options": "X-Ray\nUltrasound\nCT\nMRI\nMammography\nECG\nEcho\nPFT\nBMD\nOther",
+   "reqd": 1
+  },
+  {
+   "description": "e.g. X-Ray Chest PA, USG Abdomen",
+   "fieldname": "study_description",
+   "fieldtype": "Data",
+   "label": "Study Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scheduled_at",
+   "fieldtype": "Datetime",
+   "label": "Scheduled At"
+  },
+  {
+   "fieldname": "performing_unit",
+   "fieldtype": "Link",
+   "label": "Performing Unit / Room",
+   "options": "Healthcare Service Unit"
+  },
+  {
+   "fieldname": "radiologist",
+   "fieldtype": "Link",
+   "label": "Assigned Radiologist",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "fieldname": "section_mwl",
+   "fieldtype": "Section Break",
+   "label": "Modality Worklist (MWL)"
+  },
+  {
+   "fieldname": "mwl_pushed",
+   "fieldtype": "Check",
+   "label": "MWL Pushed to Orthanc",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mwl_pushed_at",
+   "fieldtype": "Datetime",
+   "label": "MWL Pushed At",
+   "read_only": 1
+  },
+  {
+   "description": "Set by MWL worker after push",
+   "fieldname": "study_instance_uid",
+   "fieldtype": "Data",
+   "label": "DICOM Study Instance UID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accession_uid",
+   "fieldtype": "Data",
+   "label": "DICOM Accession UID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "images_received",
+   "fieldtype": "Check",
+   "label": "Images Received",
+   "read_only": 1
+  },
+  {
+   "fieldname": "images_received_at",
+   "fieldtype": "Datetime",
+   "label": "Images Received At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "image_count",
+   "fieldtype": "Int",
+   "label": "Image Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_report",
+   "fieldtype": "Section Break",
+   "label": "Radiology Report"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "report_status",
+   "fieldtype": "Select",
+   "label": "Report Status",
+   "options": "Pending\nDictated\nUploaded\nApproved"
+  },
+  {
+   "fieldname": "report_attachment",
+   "fieldtype": "Attach",
+   "label": "Report PDF / Document"
+  },
+  {
+   "fieldname": "report_text",
+   "fieldtype": "Long Text",
+   "label": "Findings / Impression"
+  },
+  {
+   "fieldname": "report_approved_at",
+   "fieldtype": "Datetime",
+   "label": "Report Approved At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_report",
+   "fieldtype": "Link",
+   "label": "Labit Report Record",
+   "options": "Labit Report",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Labit Core",
+ "name": "Labit Radiology Order",
+ "naming_rule": "Expression (old-style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Lab Staff",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
