@@ -332,9 +332,11 @@ The "30-day window" is the period a background Python sync service runs, pulling
 **Data imported per patient:**
 - ERPNext `Patient` record (dedup by phone + name + DOB before creating)
 - `Labit Patient External ID` (id_type: Shivam, for cross-reference)
-- Historical `Labit Requisition` records (source = Shivam Import, shivam_id stored for dedup)
-- Historical `Labit Result` records at parameter level
-- iReport PDFs fetched from Neosoft API and attached to the corresponding historical report record in ERPNext
+- Historical `Labit Requisition` records — **full history from ~2013** (source = Shivam Import, is_archived = 1, shivam_id stored for dedup)
+- Historical `Labit Result` records at parameter level — **full history from ~2013** (is_archived = 1)
+- iReport PDFs — **last 2 years only**, fetched from Neosoft API and attached to the corresponding report record in ERPNext. Older records carry the structured result data only; the UI shows "Historical record — report PDF not available for this period."
+
+**Why PDFs only 2 years:** Attaching 10+ years of PDFs would overload ERPNext file storage and is not clinically necessary — structured result data is sufficient for trend views and delta checks. The 2-year PDF window covers the period most relevant to active patient care.
 
 **Import service design:**
 - Python script (lives in `labbit-py` or `py_utils`)
